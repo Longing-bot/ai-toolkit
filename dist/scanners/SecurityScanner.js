@@ -1,141 +1,111 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SecurityScanner = void 0;
-const fs = __importStar(require("fs-extra"));
-const path = __importStar(require("path"));
-const glob = __importStar(require("glob"));
-const chalk_1 = __importDefault(require("chalk"));
+const tslib_1 = require("tslib");
+const fs = tslib_1.__importStar(require("fs-extra"));
+const path = tslib_1.__importStar(require("path"));
+const glob = tslib_1.__importStar(require("glob"));
+const chalk_1 = tslib_1.__importDefault(require("chalk"));
 class SecurityScanner {
     constructor() {
-        this.rules = [
-            // SQL Injection
-            {
-                id: 'sql-injection',
-                pattern: /(?:execute|exec|query)\s*\(\s*['"]\s*\+\s*[^)]+['"]/gi,
-                title: 'Potential SQL Injection',
-                description: 'User input is directly concatenated into SQL queries',
-                severity: 'high',
-                category: 'Injection',
-                cwe: 'CWE-89'
-            },
-            {
-                id: 'eval-usage',
-                pattern: /\beval\s*\(/g,
-                title: 'Usage of eval()',
-                description: 'eval() can execute arbitrary code and should be avoided',
-                severity: 'critical',
-                category: 'Code Injection',
-                cwe: 'CWE-94'
-            },
-            {
-                id: 'innerHTML-assignment',
-                pattern: /\.innerHTML\s*=|document\.write/gi,
-                title: 'Potential XSS via innerHTML',
-                description: 'innerHTML assignment can lead to cross-site scripting',
-                severity: 'medium',
-                category: 'Cross-Site Scripting',
-                cwe: 'CWE-79'
-            },
-            {
-                id: 'document-write',
-                pattern: /document\.write\s*\(/gi,
-                title: 'Use of document.write()',
-                description: 'document.write() can be dangerous in modern web applications',
-                severity: 'medium',
-                category: 'DOM Manipulation',
-                cwe: 'CWE-95'
-            },
-            {
-                id: 'password-hardcoded',
-                pattern: /password\s*[=:]\s*['"][^'"]+['"]/gi,
-                title: 'Hardcoded Password',
-                description: 'Password found in source code - should use environment variables',
-                severity: 'critical',
-                category: 'Secrets',
-                cwe: 'CWE-798'
-            },
-            {
-                id: 'api-key-exposed',
-                pattern: /[a-zA-Z0-9]{32,}/gi,
-                title: 'Potential API Key Exposure',
-                description: 'Long alphanumeric string that might be an API key',
-                severity: 'high',
-                category: 'Secrets',
-                cwe: 'CWE-798'
-            },
-            {
-                id: 'unsafe-regex',
-                pattern: /\/[^\/]+\/[gimy]{1,4}(?!\))/gi,
-                title: 'Potentially Dangerous Regular Expression',
-                description: 'Regular expression without proper anchoring may cause ReDoS',
-                severity: 'medium',
-                category: 'Denial of Service',
-                cwe: 'CWE-400'
-            },
-            {
-                id: 'path-traversal',
-                pattern: /\.\.\/|\.\.\\|\.\.%2e/gi,
-                title: 'Path Traversal Vulnerability',
-                description: 'Potential directory traversal attack vector detected',
-                severity: 'high',
-                category: 'Path Traversal',
-                cwe: 'CWE-22'
-            },
-            {
-                id: 'deserialization',
-                pattern: /JSON\.parse\s*\(|unserialize\s*\(/gi,
-                title: 'Unsafe Deserialization',
-                description: 'Deserializing untrusted data can lead to object injection',
-                severity: 'high',
-                category: 'Deserialization',
-                cwe: 'CWE-502'
-            },
-            {
-                id: 'crypto-weak',
-                pattern: /(md5|sha1|base64_encode)/gi,
-                title: 'Weak Cryptographic Algorithm',
-                description: 'Using deprecated or weak cryptographic algorithms',
-                severity: 'medium',
-                category: 'Cryptography',
-                cwe: 'CWE-327'
-            }
-        ];
+        Object.defineProperty(this, "rules", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: [
+                // SQL Injection
+                {
+                    id: 'sql-injection',
+                    pattern: /(?:execute|exec|query)\s*\(\s*['"]\s*\+\s*[^)]+['"]/gi,
+                    title: 'Potential SQL Injection',
+                    description: 'User input is directly concatenated into SQL queries',
+                    severity: 'high',
+                    category: 'Injection',
+                    cwe: 'CWE-89'
+                },
+                {
+                    id: 'eval-usage',
+                    pattern: /\beval\s*\(/g,
+                    title: 'Usage of eval()',
+                    description: 'eval() can execute arbitrary code and should be avoided',
+                    severity: 'critical',
+                    category: 'Code Injection',
+                    cwe: 'CWE-94'
+                },
+                {
+                    id: 'innerHTML-assignment',
+                    pattern: /\.innerHTML\s*=|document\.write/gi,
+                    title: 'Potential XSS via innerHTML',
+                    description: 'innerHTML assignment can lead to cross-site scripting',
+                    severity: 'medium',
+                    category: 'Cross-Site Scripting',
+                    cwe: 'CWE-79'
+                },
+                {
+                    id: 'document-write',
+                    pattern: /document\.write\s*\(/gi,
+                    title: 'Use of document.write()',
+                    description: 'document.write() can be dangerous in modern web applications',
+                    severity: 'medium',
+                    category: 'DOM Manipulation',
+                    cwe: 'CWE-95'
+                },
+                {
+                    id: 'password-hardcoded',
+                    pattern: /password\s*[=:]\s*['"][^'"]+['"]/gi,
+                    title: 'Hardcoded Password',
+                    description: 'Password found in source code - should use environment variables',
+                    severity: 'critical',
+                    category: 'Secrets',
+                    cwe: 'CWE-798'
+                },
+                {
+                    id: 'api-key-exposed',
+                    pattern: /[a-zA-Z0-9]{32,}/gi,
+                    title: 'Potential API Key Exposure',
+                    description: 'Long alphanumeric string that might be an API key',
+                    severity: 'high',
+                    category: 'Secrets',
+                    cwe: 'CWE-798'
+                },
+                {
+                    id: 'unsafe-regex',
+                    pattern: /\/[^\/]+\/[gimy]{1,4}(?!\))/gi,
+                    title: 'Potentially Dangerous Regular Expression',
+                    description: 'Regular expression without proper anchoring may cause ReDoS',
+                    severity: 'medium',
+                    category: 'Denial of Service',
+                    cwe: 'CWE-400'
+                },
+                {
+                    id: 'path-traversal',
+                    pattern: /\.\.\/|\.\.\\|\.\.%2e/gi,
+                    title: 'Path Traversal Vulnerability',
+                    description: 'Potential directory traversal attack vector detected',
+                    severity: 'high',
+                    category: 'Path Traversal',
+                    cwe: 'CWE-22'
+                },
+                {
+                    id: 'deserialization',
+                    pattern: /JSON\.parse\s*\(|unserialize\s*\(/gi,
+                    title: 'Unsafe Deserialization',
+                    description: 'Deserializing untrusted data can lead to object injection',
+                    severity: 'high',
+                    category: 'Deserialization',
+                    cwe: 'CWE-502'
+                },
+                {
+                    id: 'crypto-weak',
+                    pattern: /(md5|sha1|base64_encode)/gi,
+                    title: 'Weak Cryptographic Algorithm',
+                    description: 'Using deprecated or weak cryptographic algorithms',
+                    severity: 'medium',
+                    category: 'Cryptography',
+                    cwe: 'CWE-327'
+                }
+            ]
+        });
     }
     async scan(projectPath, options) {
         console.log(chalk_1.default.gray('🔒 Starting security scan...'));

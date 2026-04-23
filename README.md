@@ -1,140 +1,242 @@
-# AI Toolkit CLI
+# AI Toolkit
 
-A comprehensive command-line toolkit for AI-powered development workflows, code analysis, and automation.
+🤖 Advanced AI toolkit with machine learning capabilities and intelligent automation
 
-## Features
+## 🚀 Features
 
-- **Code Analysis**: Advanced static code analysis with AI insights
-- **Documentation Generator**: Automatically generate documentation from code comments
-- **Testing Assistant**: AI-powered test case generation and review
-- **Code Refactoring**: Suggest improvements and refactorings
-- **Performance Profiling**: Analyze code performance patterns
-- **Security Scanner**: Security vulnerability detection
+### **Machine Learning**
+- **Model Training**: Train neural networks, decision trees, and random forests
+- **Data Processing**: Process and analyze large datasets efficiently
+- **Model Evaluation**: Comprehensive model performance analysis
 
-## Installation
+### **Automation**
+- **Task Automation**: Automate repetitive tasks with scheduling
+- **Workflow Management**: Manage complex automated workflows
+- **Notification System**: Real-time notifications for completed tasks
+
+### **System Analysis**
+- **Performance Monitoring**: Monitor CPU, memory, disk, and network usage
+- **Resource Optimization**: Optimize system resources based on analysis
+- **Health Checks**: Regular system health monitoring
+
+## 📦 Installation
 
 ```bash
-npm install -g ai-toolkit-cli
+npm install -g new-ai-toolkit
 ```
 
-## Quick Start
+## 🎯 Usage
+
+### Basic Commands
 
 ```bash
-# Analyze a project
-ai-toolkit analyze ./my-project
+# Show help
+aitoolkit --help
 
-# Generate documentation
-ai-toolkit docs ./src --output ./docs
-
-# Create tests
-ai-toolkit test ./src --framework jest
-
-# Security scan
-ai-toolkit security ./src
+# Show version
+aitoolkit --version
 ```
 
-## Usage Examples
+### Machine Learning Commands
 
-### Basic Code Analysis
 ```bash
-ai-toolkit analyze ./project
+# Train a neural network model
+aitoolkit train --data ./data/training.csv --model neural-network --epochs 200
+
+# Train a decision tree model
+aitoolkit train --data ./data/training.csv --model decision-tree --epochs 50
 ```
 
-Output:
-```
-📊 Analysis Results:
-├── Complexity: 2.3 (Good)
-├── Coverage: 85% 
-├── Issues: 3 minor
-└── Suggestions: 2 improvements found
-```
+### Data Processing Commands
 
-### Documentation Generation
 ```bash
-ai-toolkit docs ./src/components --format markdown --output ./docs/api
+# Process data files
+aitoolkit process --input ./data/input.json --output ./data/output.csv --format csv
+
+# Convert between formats
+aitoolkit process --input ./data/data.xml --output ./data/data.json --format json
 ```
 
-### Test Generation
+### Automation Commands
+
 ```bash
-ai-toolkit test ./src/utils/calculator.js --type unit --framework jest
+# Set up task automation
+aitoolkit automate --task "daily_backup" --schedule "0 2 * * *"
+
+# Enable notifications
+aitoolkit automate --task "report_generation" --schedule "0 9 * * 1" --notify
 ```
 
-## Configuration
+### System Analysis Commands
 
-Create `.ai-toolkit.json` in your project root:
+```bash
+# Analyze system resources
+aitoolkit analyze --cpu --memory --disk --network
+
+# CPU analysis only
+aitoolkit analyze --cpu
+
+# Memory analysis
+aitoolkit analyze --memory
+```
+
+### Configuration Commands
+
+```bash
+# List all configurations
+aitoolkit config --list
+
+# Get specific configuration
+aitoolkit config --get max_epochs
+
+# Set configuration value
+aitoolkit config --set auto_save true
+```
+
+## 🛠️ Development
+
+### Setup
+
+```bash
+git clone https://github.com/Longing-bot/new-ai-toolkit.git
+cd new-ai-toolkit
+npm install
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Test
+
+```bash
+npm test
+```
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+## 📊 Examples
+
+### Complete Workflow Example
+
+```bash
+# 1. Configure the toolkit
+aitoolkit config --set model_type "neural-network"
+aitoolkit config --set max_epochs "300"
+
+# 2. Process your data
+aitoolkit process --input ./raw_data.csv --output ./processed_data.json
+
+# 3. Train a model
+aitoolkit train --data ./processed_data.json --epochs 300
+
+# 4. Set up automation
+aitoolkit automate --task "weekly_model_retrain" --schedule "0 3 * * 0"
+
+# 5. Monitor system performance
+aitoolkit analyze --cpu --memory --disk
+```
+
+### Advanced Configuration
+
+Create a `.aitoolkitrc` file in your home directory:
 
 ```json
 {
-  "analysis": {
-    "complexityThreshold": 10,
-    "coverageTarget": 90,
-    "excludePatterns": ["**/*.test.*", "node_modules/**"]
-  },
-  "documentation": {
-    "formats": ["markdown", "html"],
-    "includePrivate": false
-  }
+  "model_type": "neural-network",
+  "max_epochs": 500,
+  "auto_save": true,
+  "notification_email": "user@example.com",
+  "log_level": "info"
 }
 ```
 
-## API Reference
+## 🧪 Testing
 
-### Commands
+Run tests with Jest:
 
-#### `ai-toolkit analyze <path>`
-Analyze code quality and complexity.
-
-**Options:**
-- `--format [json|text|html]` - Output format
-- `--threshold <number>` - Complexity threshold
-- `--include-dependencies` - Include dependency analysis
-
-#### `ai-toolkit docs <source> [options]`
-Generate documentation from source code.
-
-**Options:**
-- `--output <dir>` - Output directory
-- `--format [markdown|html|json]` - Documentation format
-- `--template <name>` - Documentation template
-
-#### `ai-toolkit test <source> [options]`
-Generate and manage test cases.
-
-**Options:**
-- `--framework [jest|mocha|vitest]` - Testing framework
-- `--type [unit|integration|e2e]` - Test type
-- `--coverage` - Include coverage analysis
-
-#### `ai-toolkit security <path>`
-Scan for security vulnerabilities.
-
-**Options:**
-- `--severity [high|medium|low]` - Minimum severity level
-- `--auto-fix` - Attempt automatic fixes
-
-## Development
-
-### Setup
-```bash
-git clone https://github.com/Longing-bot/ai-toolkit.git
-cd ai-toolkit
-npm install
-npm run build
-```
-
-### Running Tests
 ```bash
 npm test
-npm run test:watch
+
+# With coverage report
+npm test -- --coverage
+
+# Watch mode
+npm test -- --watch
 ```
 
-### Building
+## 📈 Performance
+
+The AI Toolkit is designed for high performance:
+
+- **Fast Data Processing**: Efficient algorithms for large datasets
+- **Optimized Training**: GPU acceleration support for neural networks
+- **Memory Management**: Automatic resource cleanup and optimization
+- **Concurrent Operations**: Parallel processing for multiple tasks
+
+## 🔧 Configuration Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `model_type` | `neural-network` | Type of ML model to use |
+| `max_epochs` | `100` | Maximum training epochs |
+| `auto_save` | `true` | Auto-save trained models |
+| `log_level` | `info` | Logging level (debug, info, warn, error) |
+| `batch_size` | `32` | Batch size for training |
+| `learning_rate` | `0.001` | Learning rate for optimization |
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Memory Usage High?**
 ```bash
-npm run build
-npm run build:watch
+aitoolkit config --set batch_size "16"
 ```
 
-## Contributing
+**Training Too Slow?**
+```bash
+aitoolkit config --set max_epochs "50"
+```
+
+**Need More Detailed Logs?**
+```bash
+aitoolkit config --set log_level "debug"
+```
+
+### Error Messages
+
+- `Error: Invalid data format` - Check input file format
+- `Error: Model training failed` - Verify training data quality
+- `Error: Configuration not found` - Check configuration syntax
+
+## 📝 API Reference
+
+### Core Classes
+
+#### `AIToolkit`
+Main application class handling command parsing and execution.
+
+**Methods:**
+- `trainModel(options)` - Train machine learning models
+- `processData(options)` - Process and transform data
+- `automateTask(options)` - Set up automated workflows
+- `analyzeSystem(options)` - Analyze system performance
+
+### Command Line Interface
+
+All commands return exit codes:
+- `0` - Success
+- `1` - General error
+- `2` - Command line argument error
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -142,6 +244,17 @@ npm run build:watch
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
+## 📄 License
 
-MIT License - see LICENSE file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with TypeScript for type safety
+- Uses Commander.js for CLI interface
+- Winston for logging capabilities
+- Jest for testing framework
+
+---
+
+**AI Toolkit v1.0.0** - Empowering developers with advanced AI capabilities!

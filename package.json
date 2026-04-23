@@ -1,84 +1,75 @@
 {
-  "name": "ai-toolkit-cli",
+  "name": "new-ai-toolkit",
   "version": "1.0.0",
-  "description": "AI-powered development toolkit for code analysis, documentation, and automation",
+  "description": "Advanced AI toolkit with machine learning capabilities and intelligent automation",
   "main": "dist/index.js",
   "bin": {
-    "ai-toolkit": "dist/cli.js"
+    "aitoolkit": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc --watch",
     "dev": "ts-node src/index.ts",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
     "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
     "ai",
+    "machine-learning",
+    "automation",
     "toolkit",
     "cli",
-    "code-analysis",
-    "documentation",
-    "testing",
-    "security",
-    "automation"
+    "typescript"
   ],
-  "author": "Longing Bot <longing@openclaw.ai>",
+  "author": "Longing",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Longing-bot/ai-toolkit.git"
+    "url": "https://github.com/Longing-bot/new-ai-toolkit.git"
   },
   "bugs": {
-    "url": "https://github.com/Longing-bot/ai-toolkit/issues"
+    "url": "https://github.com/Longing-bot/new-ai-toolkit/issues"
   },
-  "homepage": "https://github.com/Longing-bot/ai-toolkit#readme",
-  "dependencies": {
-    "commander": "^10.0.0",
-    "chalk": "^5.0.0",
-    "ora": "^6.0.0",
-    "inquirer": "^9.0.0",
-    "glob": "^10.0.0",
-    "fs-extra": "^11.0.0",
-    "yaml": "^2.0.0",
-    "json5": "^2.0.0",
-    "semver": "^7.0.0",
-    "node-fetch": "^3.0.0",
-    "axios": "^1.0.0",
-    "joi": "^17.0.0",
-    "lodash": "^4.0.0",
-    "chokidar": "^3.0.0",
-    "handlebars": "^4.0.0",
-    "marked": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/lodash": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.0.0",
-    "jest": "^29.0.0",
-    "@types/jest": "^29.0.0",
-    "@types/inquirer": "^9.0.0",
-    "@types/fs-extra": "^11.0.0",
-    "@types/glob": "^8.0.0"
-  },
+  "homepage": "https://github.com/Longing-bot/new-ai-toolkit#readme",
   "engines": {
     "node": ">=16.0.0"
   },
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE",
-    "package.json"
-  ],
-  "type": "commonjs"
+  "dependencies": {
+    "commander": "^11.0.0",
+    "winston": "^3.8.2",
+    "axios": "^1.5.0",
+    "chalk": "^4.1.2",
+    "inquirer": "^9.2.0",
+    "figlet": "^1.6.0",
+    "ora": "^6.1.2",
+    "cli-table3": "^0.6.3",
+    "jsonschema": "^1.4.1",
+    "dotenv": "^16.3.1",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.0",
+    "path": "^0.12.7",
+    "os": "^0.1.2",
+    "child_process": "^1.0.2",
+    "crypto": "^1.0.1",
+    "events": "^3.3.0",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@types/jest": "^29.5.4",
+    "@types/inquirer": "^9.0.3",
+    "@types/chalk": "^2.2.0",
+    "@types/figlet": "^1.5.6",
+    "@types/ora": "^3.2.0",
+    "@types/jsonschema": "^1.1.1",
+    "@types/fs-extra": "^11.0.2",
+    "@types/glob": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
 }
