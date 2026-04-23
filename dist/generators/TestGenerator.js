@@ -14,6 +14,12 @@ class TestGenerator {
             writable: true,
             value: ['.ts', '.js', '.jsx', '.tsx']
         });
+        Object.defineProperty(this, "testCode", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: ""
+        });
     }
     async generateTests(sourcePath, options) {
         console.log(chalk_1.default.gray('🧪 Analyzing source code for test generation...'));
@@ -260,6 +266,7 @@ describe('${this.toCamelCase(fileName)}', () => {
         return testCode;
     }
     generateBasicStructureTests(fileName, options) {
+        let testCode = `\n  describe('Basic Structure Tests', () => {\n`;
         return `\n  describe('Basic Structure Tests', () => {\n`;
         testCode += `    it('should import module without errors', () => {\n`;
         testCode += `      expect(true).toBe(true);\n`;
@@ -272,7 +279,7 @@ describe('${this.toCamelCase(fileName)}', () => {
         return testCode;
     }
     addCoverageInstrumentation() {
-        return `\n  // Coverage instrumentation\n  it('should achieve reasonable coverage', () => {\n`;
+        let testCode = `\n  // Coverage instrumentation\n  it('should achieve reasonable coverage', () => {\n`;
         testCode += `    // This test helps ensure we're covering the main code paths\n`;
         testCode += `    expect(true).toBe(true);\n`;
         testCode += `  });\n`;

@@ -44,7 +44,7 @@ export class TestGenerator {
         if (testFile) {
           testFiles.push(testFile);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.warn(chalk.yellow(`⚠️  Error generating tests for ${file}: ${error.message}`));
       }
     }
@@ -299,6 +299,7 @@ describe('${this.toCamelCase(fileName)}', () => {
   }
 
   private generateBasicStructureTests(fileName: string, options: TestOptions): string {
+    let testCode = `\n  describe('Basic Structure Tests', () => {\n`;
     return `\n  describe('Basic Structure Tests', () => {\n`;
     testCode += `    it('should import module without errors', () => {\n`;
     testCode += `      expect(true).toBe(true);\n`;
@@ -312,8 +313,9 @@ describe('${this.toCamelCase(fileName)}', () => {
     return testCode;
   }
 
+  private testCode = "";
   private addCoverageInstrumentation(): string {
-    return `\n  // Coverage instrumentation\n  it('should achieve reasonable coverage', () => {\n`;
+    let testCode = `\n  // Coverage instrumentation\n  it('should achieve reasonable coverage', () => {\n`;
     testCode += `    // This test helps ensure we're covering the main code paths\n`;
     testCode += `    expect(true).toBe(true);\n`;
     testCode += `  });\n`;

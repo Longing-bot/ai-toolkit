@@ -110,7 +110,7 @@ class AIToolkit {
       console.log(chalk.green('✓ Training completed'));
       console.log(chalk.blue(`📊 Model saved to: ./models/${options.model}_${Date.now()}`));
 
-    } catch (error) {
+    } catch (error: any) {
       spinner.fail('Model training failed');
       console.error(chalk.red(`✗ Error: ${(error as Error).message}`));
     }
@@ -127,7 +127,7 @@ class AIToolkit {
       console.log(chalk.green('✓ Data processing completed'));
       console.log(chalk.blue(`📈 Processed records: 1,234`));
 
-    } catch (error) {
+    } catch (error: any) {
       spinner.fail('Data processing failed');
       console.error(chalk.red(`✗ Error: ${(error as Error).message}`));
     }
@@ -144,7 +144,7 @@ class AIToolkit {
       console.log(chalk.green('✓ Task automation enabled'));
       console.log(chalk.blue(`⏰ Next execution: ${options.schedule || 'immediately'}`));
 
-    } catch (error) {
+    } catch (error: any) {
       spinner.fail('Automation setup failed');
       console.error(chalk.red(`✗ Error: ${(error as Error).message}`));
     }
@@ -161,7 +161,7 @@ class AIToolkit {
       console.log(chalk.green('✓ System analysis finished'));
       console.log(chalk.yellow('📋 Report generated: ./reports/system_analysis.json'));
 
-    } catch (error) {
+    } catch (error: any) {
       spinner.fail('System analysis failed');
       console.error(chalk.red(`✗ Error: ${(error as Error).message}`));
     }
@@ -210,7 +210,7 @@ class AIToolkit {
   public async run(): Promise<void> {
     try {
       await this.program.parseAsync(process.argv);
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red(`✗ Error: ${(error as Error).message}`));
       process.exit(1);
     }

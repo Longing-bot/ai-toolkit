@@ -45,7 +45,7 @@ export class DocumentationGenerator {
         const relativePath = path.relative(process.cwd(), file);
         const fileDocs = this.parseFileForAPI(content, relativePath);
         apiDocs.push(...fileDocs);
-      } catch (error) {
+      } catch (error: any) {
         console.warn(chalk.yellow(`⚠️  Error parsing ${file}: ${error.message}`));
       }
     }
@@ -473,14 +473,12 @@ interface APIDoc {
 
 interface Parameter {
   name: string;
-  type: string;
   required: boolean;
   description?: string;
 }
 
 interface Property {
   name: string;
-  type: string;
   description?: string;
 }
 

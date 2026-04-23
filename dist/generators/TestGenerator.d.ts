@@ -17,6 +17,7 @@ export declare class TestGenerator {
     private generateFunctionTests;
     private generateExportTests;
     private generateBasicStructureTests;
+    private testCode;
     private addCoverageInstrumentation;
     private extractImports;
     private extractExports;

@@ -140,7 +140,7 @@ export class SecurityScanner {
       try {
         const fileIssues = await this.scanFile(file, options);
         issues.push(...fileIssues);
-      } catch (error) {
+      } catch (error: any) {
         console.warn(chalk.yellow(`⚠️  Error scanning ${file}: ${error.message}`));
       }
     }
@@ -244,7 +244,7 @@ export class SecurityScanner {
   }
 
   private filterBySeverity(issues: SecurityIssue[], minSeverity: string): SecurityIssue[] {
-    const severityLevels = { low: 0, medium: 1, high: 2, critical: 3 };
+    const severityLevels: { [key: string]: number } = { low: 0, medium: 1, high: 2, critical: 3 };
     const minLevel = severityLevels[minSeverity] || 0;
 
     return issues.filter(issue => {

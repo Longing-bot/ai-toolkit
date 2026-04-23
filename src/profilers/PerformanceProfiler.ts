@@ -75,7 +75,7 @@ export class PerformanceProfiler {
         if (options.metrics.includes('runtime')) {
           this.analyzeRuntimePatterns(content, file);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.warn(chalk.yellow(`⚠️  Error analyzing ${file}: ${error.message}`));
       }
     }
